@@ -41,6 +41,7 @@ def generate_numbered_file(name: str, column_count: int, num_range: range, align
 
 
 # Streamlit interface
+st.set_page_config(page_title='Print Merge Generator', page_icon='icons/print_merge_gen_logo.png')
 st.markdown('### Print Merge Generator for Corel Draw\n'
             '_Copyright (©) Keller Hydle_')
 
