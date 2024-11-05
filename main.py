@@ -57,19 +57,26 @@ with layout1:
     aligned = st.checkbox('Number Spots', help='If this is checked, each column will align with leading zeros '
                                                '(e.g. "01, 02, 03 ... 10")')
 
-with layout2:
-    # Live preview area
-    file_content = generate_numbered_file(name, int(column_count), range(range_start, range_stop), prefix, aligned)
-    st.text_area('Preview', file_content, height=375, help='A preview of the generated file (any changes made to it '
-                                                           'will not affect the output file)')
+# Validate required fields
+required_fields_filled = all([name, range_start, range_stop, column_count, prefix])
 
-    # Generate file when the button is clicked
-    if st.download_button(
-            label='Download File',
-            data=file_content,
-            file_name=name,
-            mime='text/csv'
-    ):
-        print('downloaded')
+with layout2:
+    if required_fields_filled:
+        # Live preview area
+        file_content = generate_numbered_file(name, int(column_count), range(range_start, range_stop), prefix, aligned)
+        st.text_area('Preview', file_content, height=375, help='A preview of the generated file (any changes made to it '
+                                                               'will not affect the output file)')
+
+        # Generate file when the button is clicked
+        if st.download_button(
+                label='Download File',
+                data=file_content,
+                file_name=name,
+                mime='text/csv'
+        ):
+            print('downloaded')
+
+    else:
+        st.warning(f'Please make sure all fields are entered correctly', icon='⚠️')
 
 st.markdown('_Copyright (©) Keller Hydle_')
