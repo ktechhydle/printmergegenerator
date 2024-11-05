@@ -49,8 +49,8 @@ with layout1:
     # Input fields
     name = st.text_input('File Name (With Extension)', 'output.txt', help='Enter the output filename along with the '
                                                                           'file extension')
-    range_start = st.number_input('Start Number', min_value=1, value=1, help='Enter the starting value')
-    range_stop = st.number_input('End Number', min_value=1, value=100, help='Enter the ending value')
+    range_start = st.number_input('Start Number', min_value=0, value=1, help='Enter the starting value')
+    range_stop = st.number_input('End Number', min_value=0, value=100, help='Enter the ending value')
     column_count = st.number_input('Repeating Amount', min_value=1, value=1, help='Enter the repeating amount of '
                                                                                   'columns')
     prefix = st.text_input('Prefix', 'No.', help='Enter the prefix of the column header row')
