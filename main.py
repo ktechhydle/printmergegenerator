@@ -42,7 +42,7 @@ def generate_numbered_file(name: str, column_count: int, num_range: range, prefi
 
 # Streamlit interface
 st.set_page_config(page_title='Print Merge Generator', page_icon='icons/print_merge_gen_logo.png')
-st.markdown('### Print Merge Generator for Corel Draw\n'
+st.markdown('### Print Merge Number Generator for Corel Draw and InDesign\n'
             '_Copyright (©) Keller Hydle_')
 
 # Input fields
