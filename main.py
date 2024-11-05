@@ -41,13 +41,11 @@ def generate_numbered_file(name: str, column_count: int, num_range: range, prefi
 
 
 st.set_page_config(page_title='Print Merge Generator', page_icon='icons/print_merge_gen_logo.png', layout='wide')
+st.markdown('<h2 style="text-align:center">Print Merge Number Generator for Corel Draw and InDesign</h2>',
+            unsafe_allow_html=True)
 layout1, layout2 = st.columns(2)
 
 with layout1:
-    # Streamlit interface
-    st.markdown('### Print Merge Number Generator for Corel Draw and InDesign\n'
-                '_Copyright (©) Keller Hydle_')
-
     # Input fields
     name = st.text_input('File Name (With Extension)', 'output.txt', help='Enter the output filename along with the '
                                                                           'file extension')
@@ -62,7 +60,7 @@ with layout1:
 with layout2:
     # Live preview area
     file_content = generate_numbered_file(name, int(column_count), range(range_start, range_stop), prefix, aligned)
-    st.text_area('Preview', file_content, height=510, help='A preview of the generated file (any changes made to it '
+    st.text_area('Preview', file_content, height=375, help='A preview of the generated file (any changes made to it '
                                                            'will not affect the output file)')
 
     # Generate file when the button is clicked
@@ -73,3 +71,5 @@ with layout2:
             mime='text/csv'
     ):
         print('downloaded')
+
+st.markdown('_Copyright (©) Keller Hydle_')
