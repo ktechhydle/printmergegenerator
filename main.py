@@ -40,29 +40,36 @@ def generate_numbered_file(name: str, column_count: int, num_range: range, prefi
     return output.getvalue()
 
 
-# Streamlit interface
-st.set_page_config(page_title='Print Merge Generator', page_icon='icons/print_merge_gen_logo.png')
-st.markdown('### Print Merge Number Generator for Corel Draw and InDesign\n'
-            '_Copyright (©) Keller Hydle_')
+st.set_page_config(page_title='Print Merge Generator', page_icon='icons/print_merge_gen_logo.png', layout='wide')
+layout1, layout2 = st.columns(2)
 
-# Input fields
-name = st.text_input('File Name (With Extension)', 'output.txt')
-range_start = st.number_input('Start Number', min_value=1, value=1)
-range_stop = st.number_input('End Number', min_value=1, value=100)
-column_count = st.number_input('Repeating Amount', min_value=1, value=1)
-prefix = st.text_input('Prefix', 'No.')
-aligned = st.checkbox('Number Spots')
+with layout1:
+    # Streamlit interface
+    st.markdown('### Print Merge Number Generator for Corel Draw and InDesign\n'
+                '_Copyright (©) Keller Hydle_')
 
-# Generate file when the button is clicked
-if st.button('Generate File'):
-    # Generate file content
-    file_content = generate_numbered_file(name, int(column_count), range(range_start, range_stop), prefix,
-                                          aligned)
+    # Input fields
+    name = st.text_input('File Name (With Extension)', 'output.txt', help='Enter the output filename along with the '
+                                                                          'file extension')
+    range_start = st.number_input('Start Number', min_value=1, value=1, help='Enter the starting value')
+    range_stop = st.number_input('End Number', min_value=1, value=100, help='Enter the ending value')
+    column_count = st.number_input('Repeating Amount', min_value=1, value=1, help='Enter the repeating amount of '
+                                                                                  'columns')
+    prefix = st.text_input('Prefix', 'No.', help='Enter the prefix of the column header row')
+    aligned = st.checkbox('Number Spots', help='If this is checked, each column will align with leading zeros '
+                                               '(e.g. "01, 02, 03 ... 10")')
 
-    # Provide download button for the generated file
-    st.download_button(
-        label='Download File',
-        data=file_content,
-        file_name=name,
-        mime='text/csv'
-    )
+with layout2:
+    # Live preview area
+    file_content = generate_numbered_file(name, int(column_count), range(range_start, range_stop), prefix, aligned)
+    st.text_area('Preview', file_content, height=510, help='A preview of the generated file (any changes made to it '
+                                                           'will not affect the output file)')
+
+    # Generate file when the button is clicked
+    if st.download_button(
+            label='Download File',
+            data=file_content,
+            file_name=name,
+            mime='text/csv'
+    ):
+        print('downloaded')
