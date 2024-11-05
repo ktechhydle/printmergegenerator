@@ -4,7 +4,7 @@ from io import StringIO
 
 
 # Function to generate the numbered file
-def generate_numbered_file(name: str, column_count: int, num_range: range, aligned=False):
+def generate_numbered_file(name: str, column_count: int, num_range: range, prefix, aligned=False):
     # Adjust the range to include the stop value
     num_range = range(num_range.start, num_range.stop + 1)
 
@@ -16,7 +16,7 @@ def generate_numbered_file(name: str, column_count: int, num_range: range, align
     writer = csv.writer(output, delimiter=',', quoting=csv.QUOTE_MINIMAL)
 
     # Write the column headers dynamically based on column_count
-    headers = [f'No.{i + 1}' for i in range(column_count)]
+    headers = [f'{prefix}{i + 1}' for i in range(column_count)]
     writer.writerow(headers)
 
     # Prepare and write each row
@@ -46,16 +46,17 @@ st.markdown('### Print Merge Generator for Corel Draw\n'
             '_Copyright (©) Keller Hydle_')
 
 # Input fields
-name = st.text_input('Enter the file name (with extension)', 'output.txt')
-column_count = st.number_input('Number of columns', min_value=1, value=1)
-range_start = st.number_input('Range start', min_value=1, value=1)
-range_stop = st.number_input('Range stop', min_value=1, value=100)
-aligned = st.checkbox('Align numbers with leading zeros')
+name = st.text_input('File Name (With Extension)', 'output.txt')
+range_start = st.number_input('Start Number', min_value=1, value=1)
+range_stop = st.number_input('End Number', min_value=1, value=100)
+column_count = st.number_input('Repeating Amount', min_value=1, value=1)
+prefix = st.text_input('Prefix', 'No.')
+aligned = st.checkbox('Number Spots')
 
 # Generate file when the button is clicked
 if st.button('Generate File'):
     # Generate file content
-    file_content = generate_numbered_file(name, int(column_count), range(int(range_start), int(range_stop) + 1),
+    file_content = generate_numbered_file(name, int(column_count), range(range_start, range_stop), prefix,
                                           aligned)
 
     # Provide download button for the generated file
