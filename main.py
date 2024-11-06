@@ -20,21 +20,24 @@ def generate_numbered_file(name: str, column_count: int, num_range: range, prefi
     headers = [f'{prefix}{i + 1}' for i in range(column_count)]
     writer.writerow(headers)
 
-    # Prepare and write each row
-    row = []
-    for i in num_range:
-        # Pad the number with leading zeros if aligned is True
-        number = str(i).zfill(max_length) if aligned else str(i)
-        row.append(number)
+    if count_numbers_vertically:
+        raise NotImplementedError
 
-        # Once row reaches column_count, write it and reset row
-        if len(row) == column_count:
+    else:
+        row = []
+        for i in num_range:
+            # Pad the number with leading zeros if aligned is True
+            number = str(i).zfill(max_length) if aligned else str(i)
+            row.append(number)
+
+            # Once row reaches column_count, write it and reset row
+            if len(row) == column_count:
+                writer.writerow(row)
+                row = []
+
+        # Write any remaining numbers in the last row if row is not empty
+        if row:
             writer.writerow(row)
-            row = []
-
-    # Write any remaining numbers in the last row if row is not empty
-    if row:
-        writer.writerow(row)
 
     # Move to start of the StringIO object to read contents
     output.seek(0)
