@@ -4,7 +4,8 @@ from io import StringIO
 
 
 # Function to generate the numbered file
-def generate_numbered_file(name: str, column_count: int, num_range: range, prefix, aligned=False):
+def generate_numbered_file(name: str, column_count: int, num_range: range, prefix, count_numbers_vertically,
+                           aligned=False):
     # Adjust the range to include the stop value
     num_range = range(num_range.start, num_range.stop + 1)
 
@@ -54,6 +55,11 @@ with layout1:
     column_count = st.number_input('Repeating Amount', min_value=1, value=1, help='Enter the repeating amount of '
                                                                                   'columns')
     prefix = st.text_input('Prefix', 'No.', help='Enter the prefix of the column header row')
+
+    count_num_vertically = False
+    if column_count > 1:
+        count_num_vertically = st.checkbox('Count Numbers Vertically', help='If this is checked, rows will '
+                                                                            'count vertically')
     aligned = st.checkbox('Number Spots', help='If this is checked, each column will align with leading zeros '
                                                '(e.g. "01, 02, 03 ... 10")')
 
@@ -66,7 +72,8 @@ if not prefix:
 
 with layout2:
     if not missing_fields:
-        file_content = generate_numbered_file(name, int(column_count), range(range_start, range_stop), prefix, aligned)
+        file_content = generate_numbered_file(name, int(column_count), range(range_start, range_stop), prefix,
+                                              count_num_vertically, aligned)
         st.text_area('Preview', file_content, height=375, help='A preview of the generated file (any changes made to '
                                                                'it will not affect the output file)')
 
