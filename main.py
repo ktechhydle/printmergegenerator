@@ -21,7 +21,24 @@ def generate_numbered_file(name: str, column_count: int, num_range: range, prefi
     writer.writerow(headers)
 
     if count_numbers_vertically:
-        raise NotImplementedError
+        # Calculate the number of rows needed for vertical arrangement
+        rows = [[] for _ in range((len(num_range) + column_count - 1) // column_count)]
+
+        # Divide the numbers into vertical columns
+        for idx, number in enumerate(num_range):
+            # Pad the number with leading zeros if aligned is True
+            formatted_number = str(number).zfill(max_length) if aligned else str(number)
+            # Place the number in the appropriate row and column
+            row_index = idx % len(rows)
+            rows[row_index].append(formatted_number)
+
+        # Fill any short rows to match the column count
+        for row in rows:
+            while len(row) < column_count:
+                row.append('')  # Fill with empty strings for alignment
+
+        # Write rows to CSV
+        writer.writerows(rows)
 
     else:
         row = []
