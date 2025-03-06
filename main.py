@@ -61,7 +61,7 @@ def generate_numbered_file(name: str, column_count: int, num_range: range, prefi
     return output.getvalue()
 
 
-st.set_page_config(page_title='Print Merge Generator', page_icon='icons/print_merge_gen_logo.png', layout='wide')
+st.set_page_config(page_title='Print Merge Generator', page_icon='icons/printmergegenerator_icon.png', layout='wide')
 st.markdown('<h2 style="text-align:center">Print Merge Number Generator for Corel Draw and InDesign</h2>',
             unsafe_allow_html=True)
 layout1, layout2 = st.columns(2)
