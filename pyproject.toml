@@ -4,13 +4,18 @@ build-backend = "maturin"
 
 [project]
 name = "print_merge_generator"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
+description = "Bindings for PrintMergeGenerator's Rust backend"
 classifiers = [
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dynamic = ["version"]
+
+[[authors]]
+name = "MP Software Foundation"
+email = "ktechindustries2019@gmail.com"
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
