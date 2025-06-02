@@ -1,9 +1,9 @@
-<img src="resources/icons/logos/printmergegenerator_icon.svg" width="125">
+<img src="assets/icons/printmergegenerator_icon.svg" width="125">
 
 # PrintMergeGenerator
 PrintMergeGenerator provides a simple way to create .csv and .txt files for Corel Draw's print merge feature.
 
-<img src="resources/screenshots/demo.png" width="auto" style="border-radius: 5px">
+<img src="assets/screenshots/demo.png" width="auto" style="border-radius: 5px">
 
 ## Overview
 PrintMergeGenerator is an amazing tool for graphic designers, ran entirely on the web! With it, you can:

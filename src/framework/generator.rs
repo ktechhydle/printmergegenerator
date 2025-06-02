@@ -1,8 +1,5 @@
 use csv::Writer;
-use pyo3::prelude::*;
-use std::io::Write;
 
-#[pyfunction]
 pub fn generate_numbers(
     prefix: &str,
     column_count: usize,
@@ -10,7 +7,7 @@ pub fn generate_numbers(
     end: usize,
     count_numbers_vertically: bool,
     aligned: bool,
-) -> PyResult<String> {
+) -> String {
     let num_range: Vec<usize> = (start..=end).collect();
     let max_length = num_range
         .last()
@@ -84,5 +81,7 @@ pub fn generate_numbers(
     let _ = writer.flush();
     drop(writer);
 
-    Ok(String::from_utf8(output_buffer)?)
+    String::from_utf8(output_buffer)
+        .expect("Error converting utf-8 to string.")
+        .to_string()
 }
