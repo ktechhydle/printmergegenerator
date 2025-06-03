@@ -2,7 +2,6 @@
 
 [web.app]
 base-path = "PrintMergeGenerator"
-out_dir = "dist"
 
 # HTML title tag content
 title = "print-merge-generator"
