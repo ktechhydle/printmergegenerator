@@ -8,15 +8,19 @@ PrintMergeGenerator provides a simple way to create .csv and .txt files for Core
 ## Overview
 PrintMergeGenerator is an amazing tool for graphic designers, ran entirely on the web! With it, you can:
 
-- **See the output** PrintMergeGenerator shows a preview of the output before download.
+- **See the output**
 
-- **Edit in real-time** PrintMergeGenerator updates the changes you make to the output in real-time.
+PrintMergeGenerator shows a preview of the output before download.
 
-- **Generate numbers quick** PrintMergeGenerator is incredibly fast at generating columns and rows (tested with over 1 million ranges!)
+- **Edit in real-time**
+
+PrintMergeGenerator updates the changes you make to the output in real-time.
+
+- **Generate numbers quick**
+
+PrintMergeGenerator is incredibly fast at generating columns and rows (tested with over 1 million ranges!)
 
 ## Free And Open Source
-Slik is 100% free with no drawbacks or limitations. There is no "premium" version; you get the latest and greatest,
-all licensed under the GPL. Slik currently only supports Windows, but can be run on macOS and Linux by cloning this
-repository.
+PrintMergeGenerator is 100% free with no drawbacks or limitations. There is no "premium" version; you get the latest and greatest, all licensed under the GPL.
 
-You can visit the website [here](https://printmergegenerator.streamlit.app/).
+You can visit the website [here](https://ktechhydle.github.io/PrintMergeGenerator/).
