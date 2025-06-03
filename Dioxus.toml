@@ -4,7 +4,7 @@
 base-path = "PrintMergeGenerator"
 
 # HTML title tag content
-title = "print-merge-generator"
+title = "PrintMergeGenerator"
 
 # include `assets` in web platform
 [web.resource]
