@@ -1,7 +1,8 @@
 [application]
 
 [web.app]
-base-path = "PrintMergeGenerator"
+base-path = "print-merge-generator"
+out_dir = "docs"
 
 # HTML title tag content
 title = "PrintMergeGenerator"
