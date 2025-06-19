@@ -23,4 +23,4 @@ PrintMergeGenerator is incredibly fast at generating columns and rows (tested wi
 ## Free And Open Source
 PrintMergeGenerator is 100% free with no drawbacks or limitations. There is no "premium" version; you get the latest and greatest, all licensed under the GPL.
 
-You can visit the website [here](https://ktechhydle.github.io/PrintMergeGenerator/).
+You can visit the website [here](https://mpsoftwarefoundation.github.io/PrintMergeGenerator/).
