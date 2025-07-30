@@ -1,5 +1,6 @@
 use crate::framework::generator::generate_numbers;
 use dioxus::prelude::*;
+use std::time::Duration;
 
 #[component]
 pub fn MainContent() -> Element {
@@ -13,21 +14,30 @@ pub fn MainContent() -> Element {
     let mut output = use_signal(|| String::new());
     let mut error_message = use_signal(|| None::<String>);
 
-    use_effect(move || {
-        let new_output =
-            match generate_numbers(&prefix(), repeat(), start(), end(), vertical(), aligned()) {
+    let _ = use_resource(move || {
+        let prefix = prefix();
+        let repeat = repeat();
+        let start = start();
+        let end = end();
+        let vertical = vertical();
+        let aligned = aligned();
+
+        async move {
+            output.set("Processing...".to_owned());
+
+            gloo_timers::future::sleep(Duration::from_millis(200)).await;
+
+            match generate_numbers(&prefix, repeat, start, end, vertical, aligned).await {
                 Ok(result) => {
                     error_message.set(None);
-                    result
+                    output.set(result);
                 }
                 Err(e) => {
                     error_message.set(Some(e));
-                    String::new()
+                    output.set("...".to_owned());
                 }
-            };
-
-        output.set(new_output);
-        ()
+            }
+        }
     });
 
     rsx!(

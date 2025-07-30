@@ -1,6 +1,6 @@
 use csv::Writer;
 
-pub fn generate_numbers(
+pub async fn generate_numbers(
     prefix: &str,
     column_count: usize,
     start: usize,
