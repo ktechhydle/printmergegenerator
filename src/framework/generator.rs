@@ -7,7 +7,7 @@ pub fn generate_numbers(
     end: usize,
     count_numbers_vertically: bool,
     aligned: bool,
-) -> String {
+) -> Result<String, String> {
     let num_range: Vec<usize> = (start..=end).collect();
     let max_length = num_range
         .last()
@@ -19,9 +19,10 @@ pub fn generate_numbers(
         .map(|i| format!("{}{}", prefix, i + 1))
         .collect();
 
-    let _ = writer
-        .write_record(&headers)
-        .expect("Error writing headers to CSV writer.");
+    match writer.write_record(&headers) {
+        Ok(_) => {}
+        Err(e) => return Err(e.to_string()),
+    }
 
     if count_numbers_vertically {
         let total_numbers = num_range.len();
@@ -45,9 +46,10 @@ pub fn generate_numbers(
         }
 
         for row in data_matrix {
-            let _ = writer
-                .write_record(&row)
-                .expect("Error writing data row to CSV writer.");
+            match writer.write_record(&row) {
+                Ok(_) => {}
+                Err(e) => return Err(e.to_string()),
+            }
         }
     } else {
         let mut current_row: Vec<String> = Vec::new();
@@ -61,9 +63,11 @@ pub fn generate_numbers(
             current_row.push(formatted_number);
 
             if current_row.len() == column_count {
-                let _ = writer
-                    .write_record(&current_row)
-                    .expect("Error writing horizontal row to CSV writer.");
+                match writer.write_record(&current_row) {
+                    Ok(_) => {}
+                    Err(e) => return Err(e.to_string()),
+                }
+
                 current_row = Vec::new();
             }
         }
@@ -72,16 +76,19 @@ pub fn generate_numbers(
             while current_row.len() < column_count {
                 current_row.push("".to_string());
             }
-            let _ = writer
-                .write_record(&current_row)
-                .expect("Error writing padded horizontal row to CSV writer.");
+
+            match writer.write_record(&current_row) {
+                Ok(_) => {}
+                Err(e) => return Err(e.to_string()),
+            }
         }
     }
 
     let _ = writer.flush();
     drop(writer);
 
-    String::from_utf8(output_buffer)
-        .expect("Error converting utf-8 to string.")
-        .to_string()
+    Ok(match String::from_utf8(output_buffer) {
+        Ok(string) => string,
+        Err(e) => return Err(e.to_string()),
+    })
 }

@@ -11,10 +11,20 @@ pub fn MainContent() -> Element {
     let vertical = use_signal(|| false);
     let aligned = use_signal(|| false);
     let mut output = use_signal(|| String::new());
+    let mut error_message = use_signal(|| None::<String>);
 
     use_effect(move || {
         let new_output =
-            generate_numbers(&prefix(), repeat(), start(), end(), vertical(), aligned());
+            match generate_numbers(&prefix(), repeat(), start(), end(), vertical(), aligned()) {
+                Ok(result) => {
+                    error_message.set(None);
+                    result
+                }
+                Err(e) => {
+                    error_message.set(Some(e));
+                    String::new()
+                }
+            };
 
         output.set(new_output);
         ()
@@ -23,6 +33,17 @@ pub fn MainContent() -> Element {
     rsx!(
         div {
             class: "main-content",
+
+            if let Some(error) = &*error_message.read() {
+                dialog { open: "true",
+                    p {
+                        "{error}"
+                    }
+                    button { onclick: move |_| {
+                        error_message.set(None);
+                    }, "Ok" }
+                }
+            }
 
             div {
                 style: "flex: 1;",
