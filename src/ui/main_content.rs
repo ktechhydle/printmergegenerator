@@ -165,7 +165,7 @@ fn Controls(
 fn Preview(filename: Signal<String>, output: Signal<String>) -> Element {
     let download_file = move |_| {
         let content = output();
-        let escaped_content = content.replace('\n', "\\n").replace('\"', "\\\""); // Escape JS-sensitive characters
+        let escaped_content = content.replace('\n', "\\n").replace('\"', "\\\"");
         let js = format!(
             r#"
             const blob = new Blob(["{}"], {{ type: "text/plain" }});
@@ -179,6 +179,7 @@ fn Preview(filename: Signal<String>, output: Signal<String>) -> Element {
             escaped_content,
             filename()
         );
+
         document::eval(&js);
     };
 
