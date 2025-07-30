@@ -1,26 +1,27 @@
 <img src="assets/icons/printmergegenerator_icon.svg" width="125">
 
 # PrintMergeGenerator
-PrintMergeGenerator provides a simple way to create .csv and .txt files for Corel Draw's print merge feature.
+
+**PrintMergeGenerator** makes it super easy to create `.csv` and `.txt` files for CorelDRAW’s Print Merge feature — right from your browser!
 
 <img src="assets/screenshots/demo.png" width="auto" style="border-radius: 5px">
 
 ## Overview
-PrintMergeGenerator is an amazing tool for graphic designers, ran entirely on the web! With it, you can:
 
-- **See the output**
+Whether you're cranking out name tags, event badges, or any mass-personalized design, PrintMergeGenerator is here to save you clicks and time. All in your browser, no installs needed!
 
-PrintMergeGenerator shows a preview of the output before download.
+**Preview Instantly**
+See exactly what your output looks like before hitting that download button.
 
-- **Edit in real-time**
+**Live Editing**
+Every change you make is instantly reflected into that sweet preview.
 
-PrintMergeGenerator updates the changes you make to the output in real-time.
+**Blazingly Fast**
+Implemented in Rust and WASM to generate rows and columns quick (we tested with over **1 million ranges**; no sweat!).
 
-- **Generate numbers quick**
+## Free & Open Source
 
-PrintMergeGenerator is incredibly fast at generating columns and rows (tested with over 1 million ranges!)
+No paywalls. No limitations. Just full-featured, open source goodness.
+Licensed under the **GPL**, so you’re free to use, modify, and share.
 
-## Free And Open Source
-PrintMergeGenerator is 100% free with no drawbacks or limitations. There is no "premium" version; you get the latest and greatest, all licensed under the GPL.
-
-You can visit the website [here](https://mpsoftwarefoundation.github.io/PrintMergeGenerator/).
+👉 [Try it out here](https://mpsoftwarefoundation.github.io/PrintMergeGenerator/)
