@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PrintMergeGenerator</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="src/script.js" defer></script>
+    </head>
+    <body>
+        <div class="header">
+            <div>
+                <img
+                    src="assets/icons/printmergegenerator_icon.svg"
+                    width="125"
+                />
+            </div>
+            <div>
+                <h1>PrintMergeGenerator</h1>
+                <p>
+                    Easily generate print merge files for Corel Draw and
+                    InDesign
+                </p>
+            </div>
+        </div>
+        <hr />
+        <div class="main-content">
+            <dialog id="error-dialog" open="false">
+                <p id="error-dialog-msg"></p>
+                <button onclick="closeErrorDialog()">Ok</button>
+            </dialog>
+            <div style="flex: 1">
+                <form id="controls">
+                    <label>
+                        <p>Filename (With Extension)</p>
+                        <input type="text" name="filename" value="output.txt" />
+                    </label>
+
+                    <label>
+                        <p>Start Number</p>
+                        <input type="number" name="start" min="0" value="0" />
+                    </label>
+
+                    <label>
+                        <p>End Number</p>
+                        <input type="number" name="end" min="1" value="" />
+                    </label>
+
+                    <label>
+                        <p>Repeating Amount</p>
+                        <input type="number" name="repeat" min="1" value="" />
+                    </label>
+
+                    <label>
+                        <p>Prefix</p>
+                        <input type="text" name="prefix" value="" />
+                    </label>
+
+                    <div class="checkbox-container">
+                        <input
+                            type="checkbox"
+                            id="count-numbers-vertically"
+                            name="vertical"
+                        />
+                        <label for="count-numbers-vertically"
+                            >Count Numbers Vertically</label
+                        >
+                    </div>
+                    <br />
+
+                    <div class="checkbox-container">
+                        <input
+                            type="checkbox"
+                            id="number-spots"
+                            name="aligned"
+                        />
+                        <label for="number-spots">Number Spots</label>
+                    </div>
+                </form>
+            </div>
+            <div style="flex: 1">
+                <p>Preview</p>
+                <textarea id="preview" readonly="true"></textarea>
+                <button onclick="downloadOutput()">Download File</button>
+            </div>
+        </div>
+        <div class="footer">
+            <br /><i>Copyright (©) MP Software Foundation</i>
+        </div>
+    </body>
+</html>

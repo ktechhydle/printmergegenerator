@@ -22,6 +22,10 @@ hr {
     margin: 5px;
 }
 
+p {
+    margin: 0px 0px 5px 0px;
+}
+
 .header {
     padding: 10px;
     display: flex;
