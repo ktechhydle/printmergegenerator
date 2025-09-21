@@ -5,15 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>PrintMergeGenerator</title>
         <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="assets/icons/pmg_icon.svg" />
         <script src="src/script.js" defer></script>
     </head>
     <body>
         <div class="header">
             <div>
-                <img
-                    src="assets/icons/printmergegenerator_icon.svg"
-                    width="125"
-                />
+                <img src="assets/icons/pmg_icon.svg" width="125" />
             </div>
             <div>
                 <h1>PrintMergeGenerator</h1>
@@ -25,7 +23,7 @@
         </div>
         <hr />
         <div class="main-content">
-            <dialog id="error-dialog" open="false">
+            <dialog id="error-dialog">
                 <p id="error-dialog-msg"></p>
                 <button onclick="closeErrorDialog()">Ok</button>
             </dialog>
@@ -38,22 +36,22 @@
 
                     <label>
                         <p>Start Number</p>
-                        <input type="number" name="start" min="0" value="0" />
+                        <input type="number" name="start" min="0" value="1" />
                     </label>
 
                     <label>
                         <p>End Number</p>
-                        <input type="number" name="end" min="1" value="" />
+                        <input type="number" name="end" min="1" value="100" />
                     </label>
 
                     <label>
                         <p>Repeating Amount</p>
-                        <input type="number" name="repeat" min="1" value="" />
+                        <input type="number" name="repeat" min="1" value="2" />
                     </label>
 
                     <label>
                         <p>Prefix</p>
-                        <input type="text" name="prefix" value="" />
+                        <input type="text" name="prefix" value="No." />
                     </label>
 
                     <div class="checkbox-container">
