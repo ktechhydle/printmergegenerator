@@ -1,4 +1,4 @@
-<img src="assets/icons/printmergegenerator_icon.svg" width="125">
+<img src="assets/icons/pmg_icon.svg" width="125">
 
 # PrintMergeGenerator
 
