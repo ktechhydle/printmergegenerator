@@ -1,7 +1,7 @@
 [application]
 
 [web.app]
-base_path = "PrintMergeGenerator"
+base_path = "printmergegenerator"
 out_dir = "docs"
 title = "PrintMergeGenerator"
 
