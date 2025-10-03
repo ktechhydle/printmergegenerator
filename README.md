@@ -24,4 +24,4 @@ Implemented in Rust and WASM to generate rows and columns quick (we tested with 
 No paywalls. No limitations. Just full-featured, open source goodness.
 Licensed under the **GPL**, so you’re free to use, modify, and share.
 
-👉 [Try it out here](https://mpsoftwarefoundation.github.io/PrintMergeGenerator/)
+👉 [Try it out here](https://ktechhydle.github.io/printmergegenerator/)
